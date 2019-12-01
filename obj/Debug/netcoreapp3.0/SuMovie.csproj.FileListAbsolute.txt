@@ -46,3 +46,7 @@
 /home/alek/projekty/SuMovie/obj/Debug/netcoreapp3.0/SuMovie.csproj.CopyComplete
 /home/alek/projekty/SuMovie/obj/Debug/netcoreapp3.0/SuMovie.dll
 /home/alek/projekty/SuMovie/obj/Debug/netcoreapp3.0/SuMovie.pdb
+/home/alek/projekty/SuMovie/bin/Debug/netcoreapp3.0/AngleSharp.dll
+/home/alek/projekty/SuMovie/bin/Debug/netcoreapp3.0/Npgsql.dll
+/home/alek/projekty/SuMovie/bin/Debug/netcoreapp3.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/home/alek/projekty/SuMovie/bin/Debug/netcoreapp3.0/Microsoft.EntityFrameworkCore.Design.dll
