@@ -54,6 +54,8 @@ namespace SuMovie.Tools
                         stars.Add(new Person(actor));
                     }
 
+                    stars.Remove(stars.First());
+
             
                     if(metascoreElement!=null){
                         if(int.TryParse(metascoreElement.Text(), out metascore))

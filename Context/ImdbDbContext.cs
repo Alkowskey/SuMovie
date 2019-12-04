@@ -13,7 +13,7 @@ namespace SuMovie.Context
             
         }
         public DbSet<Movie> Movies { get; set; }
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<Person> People { get; set; }
 
         public List<Movie> addManyMovies(List<Movie> movies){
 
@@ -29,7 +29,24 @@ namespace SuMovie.Context
 
             this.SaveChanges();
 
-            return movies;
+            return moviesNotInDb.ToList();
+        }
+
+        public List<Person> addManyPeople(List<Person> people){
+            var newPeople = people.Select(p => p.Name).Distinct().ToArray();
+            var peopleInDb = People.Where(p => newPeople.Contains(p.Name))
+                                        .Select(p => p.Name).ToArray();
+            var peopleNotInDb = people.Where(p => !peopleInDb.Contains(p.Name));
+            foreach(Person p in peopleNotInDb){
+                People.Add(p);
+            }
+
+
+            this.SaveChanges();
+
+            
+            return peopleNotInDb.ToList();
+
         }
     }
 }

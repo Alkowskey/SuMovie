@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SuMovie.Context;
@@ -9,9 +10,10 @@ using SuMovie.Context;
 namespace SuMovie.Migrations
 {
     [DbContext(typeof(ImdbDbContext))]
-    partial class ImdbDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191204202655_secondMigration")]
+    partial class secondMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
