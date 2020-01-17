@@ -24,8 +24,6 @@ namespace SuMovie.Controllers{
             _imdbScraper = imdbScraper;
             _dbContext = dbContext;
         }
-<<<<<<< HEAD
-=======
 
         [HttpGet("getAll")]
 
@@ -33,11 +31,6 @@ namespace SuMovie.Controllers{
             return _dbContext.selectAllMovies();
         }
 
->>>>>>> 06469e83193d607482bf855efcaefe143e12d155
-        [HttpGet]
-        public List<Movie> Get() {
-            return _dbContext.getAllMovies();
-        }
 
         [HttpGet("updateDatabase")]
         public List<Movie> UpdateDatabase(){

@@ -20,19 +20,8 @@ namespace SuMovie.Context
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Person> People { get; set; }
 
-<<<<<<< HEAD
-        public List<Movie> getAllMovies() {
-            IQueryable<Movie> rtn = Movies.Include(m => m.Stars);//function x(Movie m){return m.Stars}
-            return rtn.ToList();
-        }
-
-        public Person findPersonByName(string name){
-            return People.Where(p => p.Name == name).FirstOrDefault();
-=======
         public IQueryable<Movie> selectAllMovies(){
-            return Movies.Include(m => m.Stars).Include(m => m.Director);
-
->>>>>>> 06469e83193d607482bf855efcaefe143e12d155
+            return Movies.Include(m => m.Stars);
         }
 
         public List<Movie> addManyMovies(List<Movie> movies){
