@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +23,12 @@ namespace SuMovie.Controllers{
             _logger = logger;
             _imdbScraper = imdbScraper;
             _dbContext = dbContext;
+        }
+
+        [HttpGet("getAll")]
+
+        public IQueryable<Movie> getAll(){
+            return _dbContext.selectAllMovies();
         }
 
         [HttpGet]

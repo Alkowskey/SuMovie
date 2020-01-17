@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/home/alek/projekty/SuMovie/SuMovie.csproj": {}
+    "C:\\Users\\Stan Marek\\Documents\\SuMovie\\SuMovie.csproj": {}
   },
   "projects": {
-    "/home/alek/projekty/SuMovie/SuMovie.csproj": {
+    "C:\\Users\\Stan Marek\\Documents\\SuMovie\\SuMovie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/alek/projekty/SuMovie/SuMovie.csproj",
+        "projectUniqueName": "C:\\Users\\Stan Marek\\Documents\\SuMovie\\SuMovie.csproj",
         "projectName": "SuMovie",
-        "projectPath": "/home/alek/projekty/SuMovie/SuMovie.csproj",
-        "packagesPath": "/home/alek/.nuget/packages/",
-        "outputPath": "/home/alek/projekty/SuMovie/obj/",
+        "projectPath": "C:\\Users\\Stan Marek\\Documents\\SuMovie\\SuMovie.csproj",
+        "packagesPath": "C:\\Users\\Stan Marek\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Stan Marek\\Documents\\SuMovie\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/alek/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Stan Marek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -41,8 +43,10 @@
               "version": "[0.13.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.0.1, )"
+              "version": "[3.1.0, )"
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
@@ -69,7 +73,19 @@
           "warn": true,
           "downloadDependencies": [
             {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
               "version": "[3.0.0, 3.0.0]"
             }
           ],
@@ -81,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

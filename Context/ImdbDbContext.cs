@@ -15,6 +15,11 @@ namespace SuMovie.Context
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Person> People { get; set; }
 
+        public IQueryable<Movie> selectAllMovies(){
+            return Movies.Include(m => m.Stars).Include(m => m.Director);
+
+        }
+
         public List<Movie> addManyMovies(List<Movie> movies){
 
 
