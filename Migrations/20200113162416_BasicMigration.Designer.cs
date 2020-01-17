@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SuMovie.Context;
@@ -9,9 +10,10 @@ using SuMovie.Context;
 namespace SuMovie.Migrations
 {
     [DbContext(typeof(ImdbDbContext))]
-    partial class ImdbDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200113162416_BasicMigration")]
+    partial class BasicMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,6 +27,9 @@ namespace SuMovie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int?>("Directorid")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Language")
                         .HasColumnType("text");
@@ -42,6 +47,8 @@ namespace SuMovie.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Directorid");
 
                     b.ToTable("Movies");
                 });
@@ -66,19 +73,11 @@ namespace SuMovie.Migrations
                     b.ToTable("People");
                 });
 
-            modelBuilder.Entity("SuMovie.Models.PersonMovie", b =>
+            modelBuilder.Entity("SuMovie.Models.Movie", b =>
                 {
-                    b.Property<int>("MovieId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("MovieId", "PersonId");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("PersonMovie");
+                    b.HasOne("SuMovie.Models.Person", "Director")
+                        .WithMany()
+                        .HasForeignKey("Directorid");
                 });
 
             modelBuilder.Entity("SuMovie.Models.Person", b =>
@@ -86,21 +85,6 @@ namespace SuMovie.Migrations
                     b.HasOne("SuMovie.Models.Movie", null)
                         .WithMany("Stars")
                         .HasForeignKey("MovieId");
-                });
-
-            modelBuilder.Entity("SuMovie.Models.PersonMovie", b =>
-                {
-                    b.HasOne("SuMovie.Models.Movie", "Movie")
-                        .WithMany()
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SuMovie.Models.Person", "Person")
-                        .WithMany()
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
