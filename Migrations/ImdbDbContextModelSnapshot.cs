@@ -26,9 +26,6 @@ namespace SuMovie.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("Directorid")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Language")
                         .HasColumnType("text");
 
@@ -45,8 +42,6 @@ namespace SuMovie.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Directorid");
 
                     b.ToTable("Movies");
                 });
@@ -71,11 +66,19 @@ namespace SuMovie.Migrations
                     b.ToTable("People");
                 });
 
-            modelBuilder.Entity("SuMovie.Models.Movie", b =>
+            modelBuilder.Entity("SuMovie.Models.PersonMovie", b =>
                 {
-                    b.HasOne("SuMovie.Models.Person", "Director")
-                        .WithMany()
-                        .HasForeignKey("Directorid");
+                    b.Property<int>("MovieId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("MovieId", "PersonId");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("PersonMovie");
                 });
 
             modelBuilder.Entity("SuMovie.Models.Person", b =>
@@ -83,6 +86,21 @@ namespace SuMovie.Migrations
                     b.HasOne("SuMovie.Models.Movie", null)
                         .WithMany("Stars")
                         .HasForeignKey("MovieId");
+                });
+
+            modelBuilder.Entity("SuMovie.Models.PersonMovie", b =>
+                {
+                    b.HasOne("SuMovie.Models.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SuMovie.Models.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

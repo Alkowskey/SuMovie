@@ -5,9 +5,8 @@ using System.Linq;
 namespace SuMovie.Models
 {
     public class Movie{
-        public Movie(String title, Person director, List<Person> stars, DateTime releaseDate, String rate, int metaScore, String language){
+        public Movie(String title, List<Person> stars, DateTime releaseDate, String rate, int metaScore, String language){
             Title = title;
-            Director = director;
             Stars = stars;
             ReleaseDate = releaseDate;
             Rate = rate;
@@ -18,8 +17,6 @@ namespace SuMovie.Models
         public Movie(){}
         public int Id {get;set;}
         public String Title {get;set;}
-        public Person Director {get;set;}
-
         public List<Person> Stars {get;set;}
 
         public DateTime ReleaseDate {get;set;}

@@ -28,6 +28,7 @@
           "Microsoft.EntityFrameworkCore.Design": "3.0.1",
           "Microsoft.EntityFrameworkCore.InMemory": "3.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.0.1",
+          "Microsoft.EntityFrameworkCore.Tools": "3.0.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "3.0.1",
           "Microsoft.AspNetCore.Antiforgery": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.0.0.0",
@@ -449,6 +450,11 @@
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.Tools/3.0.1": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "3.0.1"
+        }
+      },
       "Microsoft.Extensions.Caching.Abstractions/3.0.1": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "3.0.1"
@@ -676,7 +682,7 @@
           "runtimes/win-arm64/native/sni.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "4.6.25512.1"
           }
         }
       },
@@ -685,7 +691,7 @@
           "runtimes/win-x64/native/sni.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "4.6.25512.1"
           }
         }
       },
@@ -694,7 +700,7 @@
           "runtimes/win-x86/native/sni.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "4.6.25512.1"
           }
         }
       },
@@ -2940,6 +2946,13 @@
       "sha512": "sha512-z5yBGRbM/tfywVcFhHtA/EPL+ZJK+VhyxsnIQPSBV0lzmDKTx+mKSTnSpDCaDZwp4B1VZv//lws1+FaMoeu+xA==",
       "path": "microsoft.entityframeworkcore.sqlserver/3.0.1",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.3.0.1.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Tools/3.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kDv5L/GaXWZVayLjgDRdPEORmUEa1n11dAM3rCod6MpBCJbz4/VJGdOUwjw24GGCCCmRdamVb/5pujz93fAGww==",
+      "path": "microsoft.entityframeworkcore.tools/3.0.1",
+      "hashPath": "microsoft.entityframeworkcore.tools.3.0.1.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/3.0.1": {
       "type": "package",

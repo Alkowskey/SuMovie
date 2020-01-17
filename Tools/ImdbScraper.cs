@@ -37,13 +37,11 @@ namespace SuMovie.Tools
 
                 if(link!=null){
 
-                    IElement metascoreElement = element.QuerySelector(".metascore");
-                    IElement directorElement = element.QuerySelector("p a");
+                    IElement metascoreElement = element.QuerySelector(".metascore");//.klasa; #i; <h1> - html - h1; 
                     IHtmlCollection<IElement> starsElement = element.QuerySelectorAll("p a");
 
                     String title = link.TextContent;
                     String rate = element.QuerySelector("strong").TextContent;
-                    String director = directorElement.TextContent;
 
                     List<Person> stars = new List<Person>();
 
@@ -54,8 +52,6 @@ namespace SuMovie.Tools
                         stars.Add(new Person(actor));
                     }
 
-                    stars.Remove(stars.First());
-
             
                     if(metascoreElement!=null){
                         if(int.TryParse(metascoreElement.Text(), out metascore))
@@ -63,9 +59,8 @@ namespace SuMovie.Tools
                         else
                             Console.WriteLine("no way!");
                     }
-                    Console.WriteLine(directorElement.TextContent);
                 
-                    list.Add(new Movie(title, new Person(director), stars, DateTime.Now, rate, metascore, "PL"));
+                    list.Add(new Movie(title, stars, DateTime.Now, rate, metascore, "PL"));
                 }
             }
 

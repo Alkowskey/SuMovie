@@ -1,0 +1,13 @@
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\bin\Debug\netcoreapp2.1\MovieRecommender.deps.json
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\bin\Debug\netcoreapp2.1\MovieRecommender.runtimeconfig.json
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\bin\Debug\netcoreapp2.1\MovieRecommender.runtimeconfig.dev.json
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\bin\Debug\netcoreapp2.1\MovieRecommender.dll
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\obj\Debug\netcoreapp2.1\MovieRecommender.csprojAssemblyReference.cache
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\obj\Debug\netcoreapp2.1\MovieRecommender.csproj.CoreCompileInputs.cache
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\obj\Debug\netcoreapp2.1\MovieRecommender.AssemblyInfoInputs.cache
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\obj\Debug\netcoreapp2.1\MovieRecommender.AssemblyInfo.cs
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\bin\Debug\netcoreapp2.1\Data\recommendation-ratings-test.csv
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\bin\Debug\netcoreapp2.1\Data\recommendation-ratings-train.csv
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\bin\Debug\netcoreapp2.1\MovieRecommender.pdb
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\obj\Debug\netcoreapp2.1\MovieRecommender.dll
+C:\projekty\SuMovie\MovieRecommender\MovieRecommender\obj\Debug\netcoreapp2.1\MovieRecommender.pdb

@@ -12,20 +12,34 @@ namespace SuMovie.Context
         public ImdbDbContext(DbContextOptions<ImdbDbContext> options) : base (options){
             
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder){
+            modelBuilder.Entity<PersonMovie>()
+                .HasKey(x => new { x.MovieId, x.PersonId });
+        }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Person> People { get; set; }
+
+        public List<Movie> getAllMovies() {
+            IQueryable<Movie> rtn = Movies.Include(m => m.Stars);//function x(Movie m){return m.Stars}
+            return rtn.ToList();
+        }
+
+        public Person findPersonByName(string name){
+            return People.Where(p => p.Name == name).FirstOrDefault();
+        }
 
         public List<Movie> addManyMovies(List<Movie> movies){
 
 
             var newMovieTitles = movies.Select(m => m.Title).Distinct().ToArray();
             var moviesInDb = Movies.Where(m => newMovieTitles.Contains(m.Title))
-                                        .Select(m => m.Title).ToArray();
+                                .Select(m => m.Title).ToArray();
             var moviesNotInDb = movies.Where(m => !moviesInDb.Contains(m.Title));
+
             foreach(Movie m in moviesNotInDb){
                 Movies.Add(m);
             }
-
 
             this.SaveChanges();
 

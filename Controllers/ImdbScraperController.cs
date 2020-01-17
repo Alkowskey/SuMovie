@@ -24,9 +24,13 @@ namespace SuMovie.Controllers{
             _imdbScraper = imdbScraper;
             _dbContext = dbContext;
         }
-
         [HttpGet]
-        public List<Movie> Get([FromQuery]int id){
+        public List<Movie> Get() {
+            return _dbContext.getAllMovies();
+        }
+
+        [HttpGet("updateDatabase")]
+        public List<Movie> UpdateDatabase(){
 
             return _dbContext.addManyMovies(_imdbScraper.GetMoviesFromImdb().Result);
         }
