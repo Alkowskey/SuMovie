@@ -17,7 +17,7 @@
       <ng-container matColumnDef="Stars">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Stars </th>
         <td mat-cell *matCellDef="let row"> 
-          {{row.stars[0].name}}
+          Missing yet
         </td>
       </ng-container>
   
@@ -46,14 +46,6 @@
             {{row.language}}
         </td>
 
-    </ng-container>
-    <!-- Actions Column -->
-    <ng-container matColumnDef="Actions">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-        <td mat-cell *matCellDef="let row">
-          <button mat-raised-button (click)="watchedMovie(row.id)" color="primary">Ogl</button>
-        </td>
-  
     </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

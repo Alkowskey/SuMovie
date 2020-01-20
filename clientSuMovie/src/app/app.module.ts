@@ -14,12 +14,16 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from './material.module';
 import { SuMovieMainComponent } from './su-movie-main/su-movie-main.component';
+import { LoginComponent } from './login/login.component';
+import { SuMovieWatchedComponent } from './su-movie-watched/su-movie-watched.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SuMovieMainComponent,
+    LoginComponent,
+    SuMovieWatchedComponent,
   ],
   imports: [
     BrowserModule,

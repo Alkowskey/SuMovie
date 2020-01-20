@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/home/alek/projekty/SuMovie/SuMovie.csproj": {}
+    "C:\\projekty\\SuMovie\\SuMovie.csproj": {}
   },
   "projects": {
-    "/home/alek/projekty/SuMovie/SuMovie.csproj": {
+    "C:\\projekty\\SuMovie\\SuMovie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/alek/projekty/SuMovie/SuMovie.csproj",
+        "projectUniqueName": "C:\\projekty\\SuMovie\\SuMovie.csproj",
         "projectName": "SuMovie",
-        "projectPath": "/home/alek/projekty/SuMovie/SuMovie.csproj",
-        "packagesPath": "/home/alek/.nuget/packages/",
-        "outputPath": "/home/alek/projekty/SuMovie/obj/",
+        "projectPath": "C:\\projekty\\SuMovie\\SuMovie.csproj",
+        "packagesPath": "C:\\Users\\Alek\\.nuget\\packages\\",
+        "outputPath": "C:\\projekty\\SuMovie\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/alek/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Alek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -73,12 +78,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -87,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

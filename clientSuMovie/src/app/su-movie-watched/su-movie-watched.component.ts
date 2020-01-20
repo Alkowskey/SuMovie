@@ -18,13 +18,13 @@ export interface Movie {
 }
 
 @Component({
-  selector: 'app-su-movie-main',
-  templateUrl: './su-movie-main.component.html',
-  styleUrls: ['./su-movie-main.component.scss']
+  selector: 'app-su-movie-watched',
+  templateUrl: './su-movie-watched.component.html',
+  styleUrls: ['./su-movie-watched.component.scss']
 })
-export class SuMovieMainComponent implements OnInit {
+export class SuMovieWatchedComponent implements OnInit {
 
-  displayedColumns: string[] = ['Id', 'Title', 'Stars', 'ReleaseDate', 'Rate', 'MetaScore', 'Language', 'Actions'];
+  displayedColumns: string[] = ['Id', 'Title', 'Stars', 'ReleaseDate', 'Rate', 'MetaScore', 'Language'];
   dataSource: MatTableDataSource<Movie>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -39,8 +39,9 @@ export class SuMovieMainComponent implements OnInit {
   constructor(private moviesService: MoviesService) { }
 
   loadMovies(){
-    this.moviesService.getAllMovies().subscribe(data => {
-      this.Movies = <Movie[]>data;
+    this.moviesService.getMoviesById().subscribe(data => {
+      console.log(data);
+      this.Movies = <Movie[]>data['watchedMovies'];
 
       this.dataSource = new MatTableDataSource(this.Movies)
 
@@ -61,11 +62,6 @@ export class SuMovieMainComponent implements OnInit {
 
 
 
-  }
-
-  watchedMovie(mId){
-    console.log(mId);
-    this.moviesService.addWatchedMovieToUser(mId);
   }
 
   applyFilter(filterValue: string) {

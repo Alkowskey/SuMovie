@@ -19,9 +19,43 @@ namespace SuMovie.Context
         }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Person> People { get; set; }
+        public DbSet<User> Users{get;set;}
 
         public IQueryable<Movie> selectAllMovies(){
             return Movies.Include(m => m.Stars);
+        }
+
+        public IQueryable<User> selectAllUsers(){
+            return Users.Include(u => u.WatchedMovies);
+        }
+
+        public User getUserById(int id){
+            return Users.Where(u => u.Id == id).Include(u => u.WatchedMovies).First();
+        }
+
+        public User login(string username, string passwordHash){
+            return Users.Where(u => u.Username == username && u.PasswordHash == passwordHash).FirstOrDefault();
+        }
+
+        public User registerUser(User user){
+            Users.Add(user);
+            this.SaveChanges();
+
+            return user;
+        }
+
+        public User watchedMovie(int uId, int mId){
+            User usr = Users.Where(u => u.Id == uId).FirstOrDefault();
+            Movie mvi = Movies.Where(m => m.Id == mId).FirstOrDefault();
+
+            if(usr.WatchedMovies == null)
+                usr.WatchedMovies = new List<Movie>();
+            usr.WatchedMovies.Add(mvi);
+
+            this.SaveChanges();
+
+            return usr;
+
         }
 
         public List<Movie> addManyMovies(List<Movie> movies){
