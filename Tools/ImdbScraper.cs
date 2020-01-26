@@ -43,6 +43,10 @@ namespace SuMovie.Tools
                     String title = link.TextContent;
                     String rate = element.QuerySelector("strong").TextContent;
 
+                    IElement genreTag = element.QuerySelector(".genre");
+
+                    String genres = genreTag.TextContent;
+
                     List<Person> stars = new List<Person>();
 
                     int metascore = -1;
@@ -60,7 +64,7 @@ namespace SuMovie.Tools
                             Console.WriteLine("no way!");
                     }
                 
-                    list.Add(new Movie(title, stars, DateTime.Now, rate, metascore, "PL"));
+                    list.Add(new Movie(title, stars, genres, DateTime.Now, rate, metascore));
                 }
             }
 

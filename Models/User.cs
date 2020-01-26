@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using Microsoft.ML.Data;
+
 namespace SuMovie.Models
 {
     public class User{
@@ -10,7 +12,7 @@ namespace SuMovie.Models
             PasswordHash = passwordHash;
             CreationDate = DateTime.Now;
 
-            WatchedMovies = new List<Movie>();
+            WatchedMovies = new List<WatchedMovie>();
         }
         public User(){}
         public int Id {get;set;}
@@ -18,7 +20,7 @@ namespace SuMovie.Models
         public String PasswordHash {get;set;}
 
         public DateTime CreationDate {get;set;}
-        public List<Movie> WatchedMovies {get;set;}
+        public List<WatchedMovie> WatchedMovies {get;set;}
 
     }
 

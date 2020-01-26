@@ -9,7 +9,7 @@ import {MoviesService} from '../movies.service';
 
 export interface Movie {
   Id: number;
-  Language: string;
+  Genres: object[];
   MetaScore: number;
   Rate: number;
   ReleaseDate: string;
@@ -24,7 +24,7 @@ export interface Movie {
 })
 export class SuMovieMainComponent implements OnInit {
 
-  displayedColumns: string[] = ['Id', 'Title', 'Stars', 'ReleaseDate', 'Rate', 'MetaScore', 'Language', 'Actions'];
+  displayedColumns: string[] = ['Id', 'Title', 'Stars', 'ReleaseDate', 'Rate', 'MetaScore', 'Genre', 'Actions'];
   dataSource: MatTableDataSource<Movie>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -65,7 +65,11 @@ export class SuMovieMainComponent implements OnInit {
 
   watchedMovie(mId){
     console.log(mId);
-    this.moviesService.addWatchedMovieToUser(mId);
+    this.moviesService.addWatchedMovieToUser(mId).subscribe(data =>{
+
+      console.log(data);
+      
+    });
   }
 
   applyFilter(filterValue: string) {

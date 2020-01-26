@@ -26,7 +26,7 @@ namespace SuMovie.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Language")
+                    b.Property<string>("Genres")
                         .HasColumnType("text");
 
                     b.Property<int>("MetaScore")
@@ -41,12 +41,7 @@ namespace SuMovie.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Movies");
                 });
@@ -107,11 +102,32 @@ namespace SuMovie.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("SuMovie.Models.Movie", b =>
+            modelBuilder.Entity("SuMovie.Models.WatchedMovie", b =>
                 {
-                    b.HasOne("SuMovie.Models.User", null)
-                        .WithMany("WatchedMovies")
-                        .HasForeignKey("UserId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int?>("MovieId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("WatchedMovies");
                 });
 
             modelBuilder.Entity("SuMovie.Models.Person", b =>
@@ -134,6 +150,17 @@ namespace SuMovie.Migrations
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SuMovie.Models.WatchedMovie", b =>
+                {
+                    b.HasOne("SuMovie.Models.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieId");
+
+                    b.HasOne("SuMovie.Models.User", "User")
+                        .WithMany("WatchedMovies")
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

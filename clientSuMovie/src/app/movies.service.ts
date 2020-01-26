@@ -25,11 +25,6 @@ export class MoviesService {
   addWatchedMovieToUser(movieId: String){
     let userId = localStorage.getItem("UserId");
 
-    console.log(userId);
-    console.log(movieId);
-
-    //https://localhost:5001/User/addWatchedMovie?uId=1&mId=3
-
     return this.http.get(`https://localhost:5001/User/addWatchedMovie?uId=${userId}&mId=${movieId}`);
 
   }

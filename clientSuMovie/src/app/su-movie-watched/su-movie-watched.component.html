@@ -40,10 +40,10 @@
       </ng-container>
 
     <!-- Language Column -->
-    <ng-container matColumnDef="Language">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Language </th>
+    <ng-container matColumnDef="Genres">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Genres </th>
         <td mat-cell *matCellDef="let row">
-            {{row.language}}
+            {{row.genres[0]}}
         </td>
 
     </ng-container>

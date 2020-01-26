@@ -9,7 +9,7 @@ import {MoviesService} from '../movies.service';
 
 export interface Movie {
   Id: number;
-  Language: string;
+  Genres: Object[];
   MetaScore: number;
   Rate: number;
   ReleaseDate: string;
@@ -24,7 +24,7 @@ export interface Movie {
 })
 export class SuMovieWatchedComponent implements OnInit {
 
-  displayedColumns: string[] = ['Id', 'Title', 'Stars', 'ReleaseDate', 'Rate', 'MetaScore', 'Language'];
+  displayedColumns: string[] = ['Id', 'Title', 'Stars', 'ReleaseDate', 'Rate', 'MetaScore', 'Genres'];
   dataSource: MatTableDataSource<Movie>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
