@@ -26,7 +26,7 @@ export interface Movie {
 })
 export class PredictionsComponent implements OnInit {
 
-  displayedColumns: string[] = ['Id', 'Title', 'Rate', 'MetaScore', 'Genre', 'Actions'];
+  displayedColumns: string[] = ['Image', 'Id', 'Title', 'Rate', 'MetaScore', 'Genre', 'Actions'];
   dataSource: MatTableDataSource<Movie>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

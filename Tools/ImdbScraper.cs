@@ -34,6 +34,7 @@ namespace SuMovie.Tools
             foreach(IElement element in listerItemList){
 
                 IElement link = element.QuerySelector("h3 a");
+                IElement Pelement = element.ParentElement;
 
                 if(link!=null){
 
@@ -42,6 +43,11 @@ namespace SuMovie.Tools
 
                     String title = link.TextContent;
                     String rate = element.QuerySelector("strong").TextContent;
+
+                    String imgUrl = Pelement.QuerySelector(".loadlate").Attributes["src"]?.Value;
+
+                    Console.WriteLine(imgUrl);
+                    
 
                     IElement genreTag = element.QuerySelector(".genre");
 
@@ -64,7 +70,7 @@ namespace SuMovie.Tools
                             Console.WriteLine("no way!");
                     }
                 
-                    list.Add(new Movie(title, stars, genres, DateTime.Now, rate, metascore));
+                    list.Add(new Movie(imgUrl, title, stars, genres, DateTime.Now, rate, metascore));
                 }
             }
 

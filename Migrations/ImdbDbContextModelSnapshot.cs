@@ -29,6 +29,9 @@ namespace SuMovie.Migrations
                     b.Property<string>("Genres")
                         .HasColumnType("text");
 
+                    b.Property<string>("ImgUrl")
+                        .HasColumnType("text");
+
                     b.Property<int>("MetaScore")
                         .HasColumnType("integer");
 
