@@ -3,6 +3,8 @@ import {MoviesService} from '../movies.service';
 
 import { ToastrService } from 'ngx-toastr';
 
+import { Router, ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private moviesService: MoviesService, private toastr: ToastrService) { }
+  constructor(private moviesService: MoviesService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -30,6 +32,7 @@ export class RegisterComponent implements OnInit {
       this.moviesService.register(this.username, this.password).subscribe(data =>{
         if(data!==null && data!==undefined)
           this.toastr.success("Zarejestrowano!", "Rejestarcja");
+          this.router.navigateByUrl("/");
       });
     }
 }

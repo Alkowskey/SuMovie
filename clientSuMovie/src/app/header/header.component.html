@@ -1,11 +1,13 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
+    <mat-toolbar-row class = "main">
         <span><img  src="./assets/logo.png"  style="width:50px;"></span>
         <a  mat-button  routerLink="/"  routerLinkActive="active">{{title}}</a>
         <a  mat-button  routerLink="/watchedList">Obejrzane</a>
         <a  mat-button  routerLink="/notWatchedList">Nie obejrzane</a>
         <a  mat-button  routerLink="/predictions">Polecane</a>
-        <a  mat-button  routerLink="/login">Zaloguj się</a>
-        <a  mat-button  routerLink="/register">Zarejestruj się</a>
+        <div class = "log">
+            <a class = "login"  mat-button  routerLink="/login">Zaloguj się</a>
+            <a class = "register" mat-button  routerLink="/register">Zarejestruj się</a>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>
