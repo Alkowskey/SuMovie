@@ -20,6 +20,10 @@ export class MoviesService {
   getAllMovies(){
     return this.http.get("https://localhost:5001/ImdbScraper/getAll");
   }
+  getAllPredictions(){
+    let userId = localStorage.getItem("UserId");
+    return this.http.get("https://localhost:5001/user/Prediction?uId="+userId);
+  }
 
   getMoviesById(){
     let userId = localStorage.getItem("UserId");
@@ -27,9 +31,15 @@ export class MoviesService {
   }
 
   logIn(Username: String, Password: string){
-    //CHANGE IT
     return this.http.post("https://localhost:5001/User/Login", { Username: Username, PasswordHash: Password }, { responseType: 'json' });
   }
+
+  notWatchedMovies(){
+    let userId = localStorage.getItem("UserId");
+    return this.http.get("https://localhost:5001/User/notWatchedMovies?uId="+userId);
+  }
+
+
 
   addWatchedMovieToUser(movieId: String){
     let userId = localStorage.getItem("UserId");

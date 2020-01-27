@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
@@ -6,9 +6,10 @@ import {MatTableDataSource} from '@angular/material/table';
 
 import {MoviesService} from '../movies.service';
 
+
 export interface Movie {
+  Genres: String;
   Id: number;
-  Genres: object[];
   MetaScore: number;
   Rate: number;
   ReleaseDate: string;
@@ -16,15 +17,15 @@ export interface Movie {
   Title: string;
 }
 
-
 @Component({
-  selector: 'app-predictions',
-  templateUrl: './predictions.component.html',
-  styleUrls: ['./predictions.component.scss']
+  selector: 'app-su-movie-notwatched',
+  templateUrl: './su-movie-notwatched.component.html',
+  styleUrls: ['./su-movie-notwatched.component.scss']
 })
-export class PredictionsComponent implements OnInit {
+export class SuMovieNotwatchedComponent implements OnInit {
 
-  displayedColumns: string[] = ['Id', 'Title', 'Rate', 'MetaScore', 'Genre', 'Actions'];
+  
+  displayedColumns: string[] = ['Id', 'Title', 'Rate', 'MetaScore', 'Genres', 'Actions'];
   dataSource: MatTableDataSource<Movie>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -32,34 +33,40 @@ export class PredictionsComponent implements OnInit {
 
   Movies: Movie[];
 
-  title = "PredictionList";
+  title = "MovieList";
   userId;
 
   constructor(private moviesService: MoviesService) { }
 
-  loadPredictions(){
-    this.moviesService.getAllPredictions().subscribe(data => {
+  loadMovies(){
+    this.moviesService.notWatchedMovies().subscribe(data => {
       this.Movies = <Movie[]>data;
 
       this.dataSource = new MatTableDataSource(this.Movies)
 
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+
+      console.log(this.Movies);
     });
   }
 
   ngOnInit() {
 
-    this.loadPredictions();
+    this.loadMovies();
 
     this.userId = localStorage.getItem("UserId");
 
     console.log(this.userId);
   }
 
-  deleteRow(row){
-      this.dataSource.data.splice(this.dataSource.data.indexOf(row), 1);
-      this.dataSource._updateChangeSubscription();
+  watchedMovie(mId){
+    console.log(mId);
+    this.moviesService.addWatchedMovieToUser(mId).subscribe(data =>{
+
+      console.log(data);
+      
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -69,8 +76,6 @@ export class PredictionsComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  
+
 
 }
-
-

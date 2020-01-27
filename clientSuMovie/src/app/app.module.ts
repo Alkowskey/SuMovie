@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { SuMovieWatchedComponent } from './su-movie-watched/su-movie-watched.component';
 import { RegisterComponent } from './register/register.component';
 import { PredictionsComponent } from './predictions/predictions.component';
+import { SuMovieNotwatchedComponent } from './su-movie-notwatched/su-movie-notwatched.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PredictionsComponent } from './predictions/predictions.component';
     SuMovieWatchedComponent,
     RegisterComponent,
     PredictionsComponent,
+    SuMovieNotwatchedComponent,
   ],
   imports: [
     BrowserModule,

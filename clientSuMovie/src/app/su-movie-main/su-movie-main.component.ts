@@ -24,7 +24,7 @@ export interface Movie {
 })
 export class SuMovieMainComponent implements OnInit {
 
-  displayedColumns: string[] = ['Id', 'Title', 'Stars', 'ReleaseDate', 'Rate', 'MetaScore', 'Genre', 'Actions'];
+  displayedColumns: string[] = ['Id', 'Title', 'Director', 'Rate', 'MetaScore', 'Genre', 'Actions'];
   dataSource: MatTableDataSource<Movie>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

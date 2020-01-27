@@ -41,6 +41,30 @@ namespace SuMovie.Context
                 .ThenInclude(u => u.Movie);
         }
 
+        public User getUserByIdNotIncluded(int id){
+            return Users
+                .Where(u => u.Id == id)
+                .FirstOrDefault();
+        }
+
+        public List<Movie> notWatchedMovies(int uId){
+
+            List<Movie> watchedMovie = selectWatchedMovies(uId);
+            List<Movie> allMovies = Movies.ToList();
+
+            return allMovies.Except(watchedMovie).ToList();
+        }
+
+        public List<Movie> selectWatchedMovies(int uId){
+            User usr = getUserByIdNotIncluded(uId);
+
+            return WatchedMovies
+                .Include(w => w.User)
+                .Where(w => w.User == usr)
+                .Include(w => w.Movie)
+                .Select(x => x.Movie).ToList();
+        }
+
         public bool saveAllUsersToCSV(){
             IQueryable<MovieRating> WM = WatchedMovies
                 .Include(w => w.User)
