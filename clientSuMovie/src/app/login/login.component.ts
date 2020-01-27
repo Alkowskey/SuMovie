@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
       console.log(this.username);
       this.moviesService.logIn(this.username, this.password).subscribe(data =>{
         console.log(data);
+        console.log(data['id']);
 
         localStorage.setItem("UserId", data['id']);
       })

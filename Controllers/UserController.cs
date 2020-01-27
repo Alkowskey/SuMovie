@@ -46,12 +46,14 @@ namespace SuMovie.Controllers{
 
         [HttpPost("register")]
         public User registerUser(User user){
+            user.PasswordHash = PasswordHasher.getHashSha256(user.PasswordHash);
             return _dbContext.registerUser(user);
         }
         //Login need to be changed to POST
-        [HttpGet("Login")]
-        public User login(string username, string passwordHash){
-            return _dbContext.login(username, passwordHash);
+        [HttpPost("Login")]
+        public User login(User user){
+            user.PasswordHash = PasswordHasher.getHashSha256(user.PasswordHash);
+            return _dbContext.login(user.Username, user.PasswordHash);
         }
 
         [HttpGet("Save")]
@@ -62,8 +64,18 @@ namespace SuMovie.Controllers{
         }
 
         [HttpGet("Prediction")]
-        public string Prediction(int uId, int mId){
-            return _movieRecommender.UseModelForSinglePrediction(uId, mId);
+        public List<Movie> Prediction(int uId){
+            List<Movie> moviesToWatch = new List<Movie>();
+            Movie[] tab = new Movie [50];
+            for (int i = 0; i < 50; i++)
+            {
+                if (_movieRecommender.UseModelForSinglePrediction(uId, i))
+                {
+                    moviesToWatch.Add(_dbContext.findMovieById(i));
+                }
+            }
+
+            return moviesToWatch;
         }
     }
 

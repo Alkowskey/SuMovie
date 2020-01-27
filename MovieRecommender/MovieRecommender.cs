@@ -18,7 +18,7 @@ namespace SuMovie
         (IDataView training, IDataView test) LoadData();
         ITransformer BuildAndTrainModel(IDataView trainingDataView);
         void EvaluateModel(IDataView testDataView);
-        String UseModelForSinglePrediction(int uId, int mId);
+        bool UseModelForSinglePrediction(int uId, int mId);
         void SaveModel(DataViewSchema trainingDataViewSchema, ITransformer model);
         
     }
@@ -98,7 +98,7 @@ namespace SuMovie
 
         }
 
-        public String UseModelForSinglePrediction(int uId, int mId)
+        public bool UseModelForSinglePrediction(int uId, int mId)
         {
             Console.WriteLine("=============== Making a prediction ===============");
             var predictionEngine = mlContext.Model.CreatePredictionEngine<MovieRating, MovieRatingPrediction>(model);
@@ -109,11 +109,11 @@ namespace SuMovie
 
             if (Math.Round(movieRatingPrediction.Score, 1) > 3.5)
             {
-                return ("Movie " + testInput.MovieId + " is recommended for user " + testInput.UserId);
+                return true;
             }
             else
             {
-                return ("Movie " + testInput.MovieId + " is not recommended for user " + testInput.UserId);
+                return false;
             }
 
         }

@@ -11,12 +11,7 @@ import {SimpleCrypto} from "simple-crypto-js";
 
 export class MoviesService {
 
-  simpleCrypto: SimpleCrypto;
-
   constructor(private http: HttpClient) { 
-    var _secretKey = "some-QWERTASD-key";
-    
-    this.simpleCrypto = new SimpleCrypto(_secretKey);
 
 
   }
@@ -33,7 +28,7 @@ export class MoviesService {
 
   logIn(Username: String, Password: string){
     //CHANGE IT
-    return this.http.get("https://localhost:5001/User/Login?username="+Username+"&passwordHash="+this.simpleCrypto.encrypt(Password));
+    return this.http.post("https://localhost:5001/User/Login", { Username: Username, PasswordHash: Password }, { responseType: 'json' });
   }
 
   addWatchedMovieToUser(movieId: String){
@@ -44,8 +39,8 @@ export class MoviesService {
   }
 
   register(Username: String, Password: string){
-    console.log(JSON.stringify({Username: Username, PasswordHash: this.simpleCrypto.encrypt(Password)}))
-    return this.http.post("https://localhost:5001/User/Register", {Username: Username, PasswordHash: this.simpleCrypto.encrypt(Password)}, {responseType: 'text'});
+    console.log(JSON.stringify({Username: Username, PasswordHash: Password}))
+    return this.http.post("https://localhost:5001/User/Register", { Username: Username, PasswordHash: Password }, { responseType: 'json'});
 
   }
 }

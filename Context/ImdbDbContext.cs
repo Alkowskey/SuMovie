@@ -31,6 +31,10 @@ namespace SuMovie.Context
                 .Include(m => m.Stars);
         }
 
+        public Movie findMovieById(int mId) {
+            return Movies.Where(m => m.Id == mId).FirstOrDefault();
+        }
+
         public IQueryable<User> selectAllUsers(){
             return Users
                 .Include(u => u.WatchedMovies)
