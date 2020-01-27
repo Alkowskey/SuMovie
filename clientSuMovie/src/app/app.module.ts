@@ -20,6 +20,8 @@ import { RegisterComponent } from './register/register.component';
 import { PredictionsComponent } from './predictions/predictions.component';
 import { SuMovieNotwatchedComponent } from './su-movie-notwatched/su-movie-notwatched.component';
 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,8 @@ import { SuMovieNotwatchedComponent } from './su-movie-notwatched/su-movie-notwa
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

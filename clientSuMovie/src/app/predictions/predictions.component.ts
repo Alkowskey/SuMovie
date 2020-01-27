@@ -6,6 +6,8 @@ import {MatTableDataSource} from '@angular/material/table';
 
 import {MoviesService} from '../movies.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 export interface Movie {
   Id: number;
   Genres: object[];
@@ -35,10 +37,12 @@ export class PredictionsComponent implements OnInit {
   title = "PredictionList";
   userId;
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(private moviesService: MoviesService, private toastr: ToastrService) { }
 
   loadPredictions(){
     this.moviesService.getAllPredictions().subscribe(data => {
+      if(data!==null && data!==undefined)
+        this.toastr.info("Załadowano polecane filmy","Polecane")
       this.Movies = <Movie[]>data;
 
       this.dataSource = new MatTableDataSource(this.Movies)
@@ -58,6 +62,10 @@ export class PredictionsComponent implements OnInit {
   }
 
   deleteRow(row){
+      this.moviesService.addWatchedMovieToUser(row.id).subscribe(data => {
+        console.log(data);
+      })
+
       this.dataSource.data.splice(this.dataSource.data.indexOf(row), 1);
       this.dataSource._updateChangeSubscription();
   }

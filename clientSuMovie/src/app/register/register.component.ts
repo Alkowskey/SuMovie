@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MoviesService} from '../movies.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,7 +10,7 @@ import {MoviesService} from '../movies.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(private moviesService: MoviesService, private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -21,13 +23,13 @@ export class RegisterComponent implements OnInit {
     console.log(this.username);
     if(this.password!=this.passwordConf)
     {
-        //Toast hasła sie nie zgadzają;
-        console.log("Hasła się różnią");
+        this.toastr.error("Hasła nie są takie same", "Rejestracja")
         return;
     }
     else{
       this.moviesService.register(this.username, this.password).subscribe(data =>{
-        console.log(data);
+        if(data!==null && data!==undefined)
+          this.toastr.success("Zarejestrowano!", "Rejestarcja");
       });
     }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MoviesService} from '../movies.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import {MoviesService} from '../movies.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(private moviesService: MoviesService, private toastr: ToastrService) { }
 
   username: string;
   password: string;
@@ -19,10 +20,13 @@ export class LoginComponent implements OnInit {
   login(){
       console.log(this.username);
       this.moviesService.logIn(this.username, this.password).subscribe(data =>{
-        console.log(data);
-        console.log(data['id']);
 
-        localStorage.setItem("UserId", data['id']);
+        if(data!==undefined&&data!==null){
+          this.toastr.success('Logowanie się powiodło! :)', 'Logowanie');
+          localStorage.setItem("UserId", data['id']);
+        }
+        else
+        this.toastr.error('Logowanie się nie powiodło! ):', 'Logowanie');
       })
   }
 
